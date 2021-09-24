@@ -45,7 +45,7 @@ for(var i =0;i<operator.length;i++){
 			var history=getHistory();
 			if(output==""&&history!=""){
 				if(isNaN(history[history.length-1])){
-					history= history.substr(0,history.length-1);
+					history = history.substr(0,history.length-1);
 				}
 			}
 			if(output!="" || history!=""){
@@ -53,8 +53,8 @@ for(var i =0;i<operator.length;i++){
 				history=history+output;
 				if(this.id=="="){
 					var result=eval(history);
-					printOutput(result);
-					printHistory("");
+					printHistory(result);
+					printOutput("");
 				}
 				else{
 					history=history+this.id;
@@ -70,7 +70,7 @@ var number = document.getElementsByClassName("number");
 for(var i =0;i<number.length;i++){
 	number[i].addEventListener('click',function(){
 		var output=reverseNumberFormat(getOutput());
-		if(output!=NaN){ //if output is a number
+		if(output!=NaN && output==""){ //if output is a number
 			output=output+this.id;
 			printOutput(output);
 		}
