@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Json Data Check</h1>
+        <table border="2" id="table_id">
+            <tr>
+                <th>Name</th>
+                <th>User Name</th>
+            </tr>
+        </table>
+
+        <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => getData(json))
+
+        function getData(users){
+            let userNames = users.map(user => user.username);
+            let tableId = document.getElementById("table_id");
+            console.log(users);
+
+            for(let i=0; i < userNames.length; i++){
+                let username = userNames[i];
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                td.innerHTML = username;
+                tableId.appendChild(tr).appendChild(td);
+            }
+        }
+        
+    </script>
+    </body>
+</html>
