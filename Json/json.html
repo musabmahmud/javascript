@@ -5,14 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+            td,th{
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
         <h1>Json Data Check</h1>
         <table border="2" id="table_id">
-            <tr>
-                <th>Name</th>
-                <th>User Name</th>
-            </tr>
+            
         </table>
 
         <script>
@@ -20,18 +22,24 @@
         .then(response => response.json())
         .then(json => getData(json))
 
-        function getData(users){
-            let userNames = users.map(user => user.username);
+        function getData(data){
+            console.log(data);
             let tableId = document.getElementById("table_id");
-            console.log(users);
-
-            for(let i=0; i < userNames.length; i++){
-                let username = userNames[i];
-                let tr = document.createElement("tr");
-                let td = document.createElement("td");
-                td.innerHTML = username;
-                tableId.appendChild(tr).appendChild(td);
-            }
+            
+            let lists = "<tr><th>Name</th><th>User Name</th><th>Email</th><th>City</th><th>Company Name</th><th>Phone</th><th>Website</th><th>Zipcode</th></tr>";
+            data.forEach(users =>{
+                lists = lists + "<tr>"+
+                    "<td>"+ users.name +"</td>"+
+                    "<td>"+ users.username +"</td>"+
+                    "<td>"+ users.email +"</td>"+
+                    "<td>"+ users.address.city+"</td>"+
+                    "<td>"+ users.company.name +"</td>"+
+                    "<td>"+ users.phone +"</td>"+
+                    "<td>"+ users.website +"</td>"+
+                    "<td>"+ users.address.zipcode +"</td>"+"</tr>";
+            });
+            
+            tableId.innerHTML = lists;
         }
         
     </script>
