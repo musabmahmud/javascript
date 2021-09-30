@@ -6,14 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <style>
+            table{
+                border: 2px solid black;
+                width: 100%;
+            }
+            th{
+                font-size: 24px;
+                background-color:burlywood;
+                text-transform: uppercase;
+            }
             td,th{
-                padding: 10px;
+                padding: 20px 0;
+                text-align: center;
+            }
+            tr:nth-child(even){
+                background-color: aquamarine;
+            }
+            tr:nth-child(odd){
+                background-color: gray;
+                color: #fff;
+            }
+            h1{
+                text-align: center;
             }
         </style>
     </head>
     <body>
         <h1>Json Data Check</h1>
-        <table border="2" id="table_id">
+        <table id="table_id">
             
         </table>
 
